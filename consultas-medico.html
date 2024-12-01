@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./css/style-login.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Portal Paciente - Consultas</title>
 </head>
 <body>    
@@ -113,15 +113,13 @@
                         
                             <div class="user-info">
                                 <p class="user-name">Roberto</p>
-                                <p class="user-role">Paciente</p>
+                                <p class="user-role">Médico</p>
                             </div>
                         </div>
                     </div>
                 </header>
 
-                <!-- Conteúdo da página -->
                 <div class="content-grid">
-                    <!-- Seção do Calendário -->
                     <div class="calendar-section">
                         <h1>Calendário de Consultas</h1>
                         <div class="calendar-container">
@@ -140,43 +138,40 @@
                                 <div>S</div>
                             </div>
                             <div class="calendar-days" id="calendarDays">
-                                <!-- Os dias serão inseridos via JavaScript -->
+                             
                             </div>
                         </div>
                     </div>
 
-                    <!-- Seção de Pacientes -->
                     <div class="patients-list-section">
                         <h2>Pacientes Agendados</h2>
                         <div class="patients-container">
-                            <!-- Card do Paciente 1 -->
                             <div class="patient-card" data-id="TRUST0331">
                                 <div class="patient-header">
                                    
                                     <div class="patient-basic-info">
                                         <h3>John Doe</h3>
-                                        <span>34 yrs | Male</span>
+                                        <span>34 anos | Masculino</span>
                                         <span class="patient-id">#TRUST0331</span>
                                     </div>
                                     <button class="more-options"><i class="fas fa-ellipsis-v"></i></button>
                                 </div>
                                 <div class="patient-details">
                                     <div class="detail-item">
-                                        <span class="label">Blood Group:</span>
-                                        <span class="value">B +ve</span>
+                                        <span class="label">Tipo sanguíneo:</span>
+                                        <span class="value">B +</span>
                                     </div>
                                     <div class="detail-item">
-                                        <span class="label">Contact:</span>
+                                        <span class="label">Contato:</span>
                                         <span class="value">9995 999 999</span>
                                     </div>
                                     <div class="detail-item">
-                                        <span class="label">Last Visit:</span>
+                                        <span class="label">Ultima consultaa:</span>
                                         <span class="value">13th Feb 2022</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Card do Paciente 2 -->
                             <div class="patient-card" data-id="TRUST0332">
                                 <div class="patient-header">
                                    
@@ -211,7 +206,6 @@
 
     
 
-    <!-- Adicione apenas este modal no final do body -->
     <div class="patient-details-modal" id="patientDetailsModal">
         <div class="modal-content">
             <div class="modal-header">
