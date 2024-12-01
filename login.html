@@ -47,8 +47,8 @@
                 </div>
             </div>
 
-            <button class="continue-btn">
-                Continuar
+            <button class="continue-btn" onclick="redirectTo('index.html')">
+                Voltar para Home
                 <i class="fas fa-arrow-right"></i>
             </button>
         </main>
@@ -85,7 +85,65 @@
             </button>
             <h3><i class="fas fa-user-md"></i> Área do Médico</h3>
             <div class="modal-buttons">
-                <button class="modal-btn login" onclick="redirectTo('login-funcionario.html')">
+                <button class="modal-btn login" onclick="redirectTo('login-medico.html')">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Fazer Login
+                </button>
+                <button class="modal-btn cadastro" onclick="redirectTo('cadastro-funcionario.html')">
+                    <i class="fas fa-user-plus"></i>
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalEnf">
+        <div class="modal-content">
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3><i class="fas fa-user-md"></i> Área do Enfermeiro(a)</h3>
+            <div class="modal-buttons">
+                <button class="modal-btn login" onclick="redirectTo('login-enfermaria.html')">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Fazer Login
+                </button>
+                <button class="modal-btn cadastro" onclick="redirectTo('cadastro-funcionario.html')">
+                    <i class="fas fa-user-plus"></i>
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalManutec">
+        <div class="modal-content">
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3><i class="fas fa-user-md"></i> Área do Técnico</h3>
+            <div class="modal-buttons">
+                <button class="modal-btn login" onclick="redirectTo('login-manutencao.html')">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Fazer Login
+                </button>
+                <button class="modal-btn cadastro" onclick="redirectTo('cadastro-funcionario.html')">
+                    <i class="fas fa-user-plus"></i>
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+      <!-- Modal Médico -->
+      <div class="modal" id="modalLimp">
+        <div class="modal-content">
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3><i class="fas fa-user-md"></i> Área do Funcionario</h3>
+            <div class="modal-buttons">
+                <button class="modal-btn login" onclick="redirectTo('login-limpeza.html')">
                     <i class="fas fa-sign-in-alt"></i>
                     Fazer Login
                 </button>
@@ -105,7 +163,7 @@
             </button>
             <h3><i class="fas fa-hospital-user"></i> Área do Funcionário</h3>
             <div class="modal-buttons">
-                <button class="modal-btn login" onclick="redirectTo('login-funcionario.html')">
+                <button class="modal-btn login" onclick="redirectTo('login-medico.html')">
                     <i class="fas fa-sign-in-alt"></i>
                     Fazer Login
                 </button>
@@ -115,7 +173,11 @@
                 </button>
             </div>
         </div>
+
+        
     </div>
+
+    
 
     <script src="js/script-login.js"></script>
 </body>

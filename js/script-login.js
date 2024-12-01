@@ -260,9 +260,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     openModal('modalMedico');
                     break;
                 case 'enfermaria':
+                    openModal('modalEnf');
+                    break;
                 case 'manutenção':
+                    openModal('modalManutec');
+                    break;
                 case 'limpeza':
-                    openModal('modalFuncionario');
+                    openModal('modalLimp');
                     break;
             }
         });

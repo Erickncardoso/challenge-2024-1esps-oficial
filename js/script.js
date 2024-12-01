@@ -19,19 +19,15 @@ document.addEventListener('DOMContentLoaded', function() {
 				department: formData.get('department')
 			};
 
-			// Criar card de consulta
 			const card = createAppointmentCard(appointmentData);
 			appointmentsList.appendChild(card);
 
-			// Mostrar notificação
 			showNotification('Consulta agendada com sucesso!');
 
-			// Limpar formulário
 			this.reset();
 		});
 	}
 
-	// Função para criar card de consulta
 	function createAppointmentCard(data) {
 		const card = document.createElement('div');
 		card.className = 'appointment-card';
@@ -51,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		return card;
 	}
 
-	// Função para mostrar notificação
 	function showNotification(message, type = 'success', duration = 5000) {
 		const notification = document.createElement('div');
 		notification.className = `notification-toast ${type}`;
@@ -66,37 +61,30 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		document.body.appendChild(notification);
 		
-		// Força um reflow
 		notification.offsetHeight;
 		
-		// Mostra a notificação
 		notification.classList.add('show');
 		
-		// Inicia o progress bar
 		const progressBar = notification.querySelector('.progress-bar');
 		progressBar.style.width = '0%';
 		
-		// Remove a notificação
 		setTimeout(() => {
 			notification.classList.remove('show');
 			setTimeout(() => notification.remove(), 300);
 		}, duration);
 	}
 
-	// Toggle do dropdown de notificações
 	notifyBell.addEventListener('click', function(e) {
 		e.stopPropagation();
 		notifyDropdown.classList.toggle('show');
 	});
 	
-	// Fechar ao clicar fora
 	document.addEventListener('click', function(e) {
 		if (!notifyDropdown.contains(e.target) && !notifyBell.contains(e.target)) {
 			notifyDropdown.classList.remove('show');
 		}
 	});
 	
-	// Marcar todas como lidas
 	document.querySelector('.notify-mark-read').addEventListener('click', function() {
 		notifyCount.style.display = 'none';
 		document.querySelectorAll('.notify-item').forEach(item => {
@@ -104,11 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 
-	// Calendário e Consultas
 	const calendarManager = {
 		currentDate: new Date(),
 		appointments: {
-			// Exemplo de dados de consultas
 			'2023-11-27': [
 				{
 					patient: 'John Doe',
@@ -128,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		renderCalendar() {
 			const daysContainer = document.getElementById('calendarDays');
-			if (!daysContainer) return; // Verifica se o elemento existe
+			if (!daysContainer) return;
 
 			const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
 			const lastDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0);
@@ -143,12 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			let daysHTML = '';
 			
-			// Dias do mês anterior
 			for (let i = 0; i < firstDay.getDay(); i++) {
 				daysHTML += '<div class="calendar-day empty"></div>';
 			}
 
-			// Dias do mês atual
 			for (let day = 1; day <= lastDay.getDate(); day++) {
 				const date = `${this.currentDate.getFullYear()}-${(this.currentDate.getMonth() + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 				const hasAppointment = this.appointments[date] ? 'has-appointment' : '';
@@ -219,7 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			const patientsList = document.querySelector('.patients-list');
 			if (!patientsList) return;
 
-			// Exemplo de dados de pacientes
 			const patients = [
 				{
 					name: 'John Doe',
@@ -229,7 +212,6 @@ document.addEventListener('DOMContentLoaded', function() {
 					contact: '9995 999 999',
 					lastVisit: '13th Feb 2022'
 				}
-				// Adicione mais pacientes conforme necessário
 			];
 
 			patientsList.innerHTML = patients.map(patient => `
@@ -249,19 +231,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	};
 
-	// Inicializa o calendário quando a página carregar
 	document.addEventListener('DOMContentLoaded', function() {
-		// Mantém o código existente do DOMContentLoaded
-		
-		// Inicializa o calendário
 		calendarManager.init();
 
-		// Função para mostrar o modal com os detalhes da consulta
 		function showAppointmentDetails(date) {
 			const modal = document.getElementById('appointmentModal');
 			const modalBody = modal.querySelector('.modal-body');
 			
-			// Exemplo de dados da consulta
 			const appointment = {
 				doctor: 'Dr. Erick',
 				date: date,
@@ -305,7 +281,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			modal.style.display = 'block';
 		}
 
-		// Fechar o modal
 		const modal = document.getElementById('appointmentModal');
 		const closeBtn = modal.querySelector('.close-modal');
 
@@ -313,14 +288,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			modal.style.display = 'none';
 		});
 
-		// Fechar o modal ao clicar fora dele
 		window.addEventListener('click', (e) => {
 			if (e.target === modal) {
 				modal.style.display = 'none';
 			}
 		});
 
-		// Adicionar evento de clique aos dias do calendário
 		document.addEventListener('click', function(e) {
 			const day = e.target.closest('.calendar-day');
 			if (day && day.classList.contains('has-appointment')) {
@@ -329,7 +302,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 
-	// Adicione este código para o calendário
 	document.addEventListener('DOMContentLoaded', function() {
 		const calendar = {
 			currentDate: new Date(),
@@ -361,7 +333,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				const year = this.currentDate.getFullYear();
 				const month = this.currentDate.getMonth();
 
-				// Atualiza o título do mês
 				const monthTitle = document.getElementById('currentMonth');
 				if (monthTitle) {
 					monthTitle.textContent = new Date(year, month, 1).toLocaleDateString('pt-BR', { 
@@ -375,12 +346,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				
 				let daysHTML = '';
 				
-				// Dias vazios do início do mês
 				for (let i = 0; i < firstDay.getDay(); i++) {
 					daysHTML += `<div class="calendar-day empty"></div>`;
 				}
 
-				// Dias do mês
 				for (let day = 1; day <= lastDay.getDate(); day++) {
 					const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 					const hasAppointment = this.appointments[date] ? 'has-appointment' : '';
@@ -416,7 +385,6 @@ document.addEventListener('DOMContentLoaded', function() {
 					});
 				}
 
-				// Evento de clique nos dias
 				document.addEventListener('click', (e) => {
 					const day = e.target.closest('.calendar-day');
 					if (day && day.classList.contains('has-appointment')) {
@@ -444,11 +412,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		};
 
-		// Inicializa o calendário
 		calendar.init();
 	});
 
-	// Função para renderizar o calendário
 	function renderCalendar() {
 		const date = new Date();
 		const month = date.getMonth();
@@ -460,12 +426,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		const daysContainer = document.getElementById('calendarDays');
 		let daysHtml = '';
 		
-		// Dias vazios do início do mês
 		for (let i = 0; i < firstDay.getDay(); i++) {
 			daysHtml += `<div class="calendar-day empty"></div>`;
 		}
 		
-		// Dias do mês
 		for (let day = 1; day <= lastDay.getDate(); day++) {
 			const isToday = day === date.getDate() ? 'today' : '';
 			const hasAppointment = [5, 10, 15, 20].includes(day) ? 'has-appointment' : '';
@@ -480,12 +444,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		daysContainer.innerHTML = daysHtml;
 	}
 
-	// Inicializar o calendário quando a página carregar
 	document.addEventListener('DOMContentLoaded', function() {
 		renderCalendar();
 	});
 
-	// Dados dos pacientes
 	const patients = {
 		'TRUST0331': {
 			name: 'João Silva',
@@ -511,7 +473,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	};
 
-	// Evento de clique nos cards
 	document.querySelectorAll('.patient-card').forEach(card => {
 		card.addEventListener('click', function() {
 			const patientId = this.dataset.id;
@@ -537,14 +498,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 
-	// Adicione este código junto com o JavaScript existente
-
-	// Função para fechar o modal quando clicar no X
 	document.querySelector('.close-modal').addEventListener('click', function() {
 		document.getElementById('patientDetailsModal').style.display = 'none';
 	});
 
-	// Função para fechar o modal quando clicar fora dele
 	window.addEventListener('click', function(event) {
 		const modal = document.getElementById('patientDetailsModal');
 		if (event.target === modal) {
@@ -552,12 +509,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 
-	// Prevenir que o modal feche quando clicar dentro dele
 	document.querySelector('.modal-content').addEventListener('click', function(event) {
 		event.stopPropagation();
 	});
 
-	// rx-prescriptions.js
 	document.addEventListener('DOMContentLoaded', function() {
 		const addMedicationForm = document.querySelector('.rx-medicine-form');
 		const medicationsList = document.querySelector('.rx-medications-list');
@@ -566,25 +521,19 @@ document.addEventListener('DOMContentLoaded', function() {
 		addMedicationForm.addEventListener('submit', function(e) {
 			e.preventDefault();
 			
-			// Coletar dados do formulário
 			const medicationName = document.querySelector('[placeholder="Digite o nome do medicamento"]').value;
 			const concentration = document.querySelector('[placeholder="Ex: 500mg"]').value;
 			const instructions = document.querySelector('.rx-textarea').value;
 			
-			// Criar novo item de medicamento
 			const newMedication = createMedicationItem(medicationName, concentration, instructions);
 			
-			// Adicionar à lista
 			const listContainer = medicationsList.querySelector('.rx-list-header').nextElementSibling;
 			listContainer.insertBefore(newMedication, listContainer.firstChild);
 			
-			// Atualizar contador
 			updateMedicationCount();
 			
-			// Mostrar alerta de sucesso
 			showSuccessAlert('Medicamento adicionado com sucesso!');
 			
-			// Limpar formulário
 			addMedicationForm.reset();
 		});
 		
@@ -620,7 +569,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			div.innerHTML = medicationHtml;
 			const medicationElement = div.firstElementChild;
 			
-			// Adicionar com animação
 			setTimeout(() => {
 				medicationElement.style.display = 'flex';
 				medicationElement.style.animation = 'slideIn 0.3s ease-out';
@@ -635,7 +583,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		
 		function showSuccessAlert(message) {
-			// Criar elemento do alerta
 			const alertHtml = `
 				<div class="rx-alert-container">
 					<div class="rx-alert rx-alert-success">
@@ -652,7 +599,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			alertElement.innerHTML = alertHtml;
 			document.body.appendChild(alertElement.firstElementChild);
 			
-			// Animar progress bar e remover alerta
 			setTimeout(() => {
 				const alert = document.querySelector('.rx-alert-container');
 				if (alert) {
